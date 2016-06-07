@@ -5,7 +5,7 @@ import datetime
 
 
 class Autumn(output.Output):
-   requiredData = ["host", "organization_id", "organization_api_key", "sensor_id"]
+   requiredData = ["host", "organization_key", "api_key", "element_id"]
    optionalData = []
 
    def __init__(self, data):
@@ -22,7 +22,7 @@ class Autumn(output.Output):
        return json.dumps({
            "data": {
                "type": "SensorData",
-               "id": self.sensor_id,
+               "id": self.element_id,
                "attributes": {
                    "is_public": false,
                    "timestamp": today.strftime(self.datetime_format),
@@ -32,7 +32,7 @@ class Autumn(output.Output):
                    "sensor": {
                        "data": {
                            "type": "Sensor",
-                           "id": self.sensor_id
+                           "id": self.element_id
                        }
                    }
                }
@@ -42,13 +42,13 @@ class Autumn(output.Output):
    def _generate_headers(self):
 
        return {
-           'ORGANIZATION-ID': self.organization_id,
-           'ORGANIZATION-API-KEY': self.organization_api_key,
+           'ORGANIZATION-ID': self.organization_key,
+           'ORGANIZATION-API-KEY': self.api_key,
            'Content-Type': 'application/vnd.api+json'
        }
 
    def _generate_path(self):
-       return '/api/external/v1/sensors/%s/sensordata/' % self.sensor_id
+       return '/api/external/v1/sensors/%s/sensordata/' % self.element_id
 
    def outputData(self, dataPoints):
 
