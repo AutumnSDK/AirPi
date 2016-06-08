@@ -1,11 +1,4 @@
 # AirPi
 Connector script for AirPi 
 
-[Autumn]
-filename = autumn
-enabled = no
-organization_key = YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-api_key = YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
-element_id = XXXXXXXXXX
-calibration = off
-target = internet
+Check outputs.cfg for the settings to need to add to this file in your own install.
